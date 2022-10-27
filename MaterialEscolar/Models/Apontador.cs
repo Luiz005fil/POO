@@ -6,7 +6,23 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    internal class Apontador
+    public class Apontador
     {
+        private bool apontar;
+        private string marca;
+        private string material;
     }
+    public bool Apontar
+    {
+        get { return apontar; }
+        set { apontar = value; }
+
+    }
+    public string Marca
+    {
+        get { return marca; }
+        set { marca = value; }
+    }
+    public apontar
+
 }
