@@ -117,7 +117,6 @@ namespace Models
                 Frear(VelocidadeAtual);
             else if (Tanque == 0)
                 LigarDesligar();
-            if (velocidadeAtual == 0);
         }
         public void Acelerar(int _impulso)
         {
