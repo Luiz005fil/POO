@@ -21,22 +21,46 @@ namespace Models
         public Pneu PneuTrazeiroDireito
         {
             get { return pneuTrazeiroDireito; }
-            set { pneuTrazeiroDireito = value; }
+            set
+            {
+                if (VelocidadeAtual == 0)
+                    pneuTrazeiroDireito = value;
+                else
+                    Console.WriteLine("TU VAI TROCAR O PNEU COM O CARRO EM MOVIMENTO?");
+            }
         }
         public Pneu PneuTrazeiroEsquerdo
         {
             get { return pneuTrazeiroEsquerdo; }
-            set { pneuTrazeiroEsquerdo = value; }
+            set
+            {
+                if (VelocidadeAtual == 0)
+                    pneuTrazeiroEsquerdo = value;
+                else
+                    Console.WriteLine("TU VAI TROCAR O PNEU COM O CARRO EM MOVIMENTO?");
+            }
         }
         public Pneu PneuDianteiroDireito
         {
             get { return pneuDianteiroDireito; }
-            set { pneuDianteiroDireito = value; }
+            set
+            {
+                if (VelocidadeAtual == 0)
+                    pneuDianteiroDireito = value;
+                else
+                    Console.WriteLine("TU VAI TROCAR O PNEU COM O CARRO EM MOVIMENTO?");
+            }
         }
         public Pneu PneuDianteiroEsquerdo
         {
             get { return pneuDianteiroEsquerdo; }
-            set { pneuDianteiroEsquerdo = value; }
+            set
+            {
+                if (VelocidadeAtual == 0)
+                    pneuDianteiroEsquerdo = value;
+                else
+                    Console.WriteLine("TU VAI TROCAR O PNEU COM O CARRO EM MOVIMENTO?");
+            }
         }
         public bool Ligado
         {
@@ -93,6 +117,7 @@ namespace Models
                 Frear(VelocidadeAtual);
             else if (Tanque == 0)
                 LigarDesligar();
+            if (velocidadeAtual == 0);
         }
         public void Acelerar(int _impulso)
         {
@@ -105,11 +130,16 @@ namespace Models
             GastarCombustivel(_impulso / 100.0);
             if (Ligado)
             {
+                VelocidadeAtual += _impulso;
                 PneuDianteiroDireito.Girar(_impulso);
                 PneuDianteiroEsquerdo.Girar(_impulso);
                 PneuTrazeiroDireito.Girar(_impulso);
                 PneuTrazeiroEsquerdo.Girar(_impulso);
-                VelocidadeAtual += _impulso;
+
+                if (PneuDianteiroDireito.Estourado || PneuDianteiroEsquerdo.Estourado || PneuTrazeiroDireito.Estourado || PneuTrazeiroEsquerdo.Estourado)
+                {
+                    Frear(VelocidadeAtual);
+                }
             }
         }
         public void Frear(int _abatimento)

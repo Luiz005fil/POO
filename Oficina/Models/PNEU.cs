@@ -50,6 +50,7 @@
         {
             get { return rotacao; }
             set { rotacao = value; }
+            
         }
 
 
@@ -69,7 +70,7 @@
             if (Furado || Estourado)
                 return;
 
-            Rotacao += _rotacao;
+            Rotacao -= _rotacao;
             GastarBorracha(_rotacao / 100.0);
         }
 
@@ -92,6 +93,8 @@
             Psi = 0;
             PercentualBorracha = 0;
             Rotacao = 0;
+            
+            
         }
 
         public void Freiar(int _abatimento)
